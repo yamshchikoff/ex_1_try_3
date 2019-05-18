@@ -31,5 +31,12 @@ namespace ex_1_try_3
                 new Uri("/Contact.xaml", UriKind.Relative)
             );
         }
+
+        private void Button_Click_Live_Support(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(
+                new Uri("/Discussion.xaml", UriKind.Relative)
+            );
+        }
     }
 }
