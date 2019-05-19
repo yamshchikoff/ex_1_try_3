@@ -7,6 +7,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Discussion">
+    <Page.Resources>
+        <local:Talk x:Key="Talk_instance" />
+    </Page.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -17,7 +20,19 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
-        <ListBox Margin="5" Grid.Row="0" Grid.ColumnSpan="2" />
+        <ListBox Margin="5" Grid.Row="0" Grid.ColumnSpan="2" ItemsSource="{Binding Source={StaticResource ResourceKey=Talk_instance}}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <DockPanel>
+                            <TextBlock Text="{Binding Sender}" FontWeight="Bold"/>
+                            <TextBlock Text=": " />
+                        </DockPanel>
+                        <TextBlock Text="{Binding Content}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
         <TextBox Margin="5" Grid.Row="1" Text="Type your message here" />
         <Button Content="Send" Grid.Column="1" Grid.Row="1" Margin="5" />
 
